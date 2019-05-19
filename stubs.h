@@ -8,7 +8,7 @@ float resta (float,float);
 float producto (float,float);
 float division (float,float);
 float exponenciacion (float,float);
-void check_errors(int);
+int check_errors(int);
 
 #endif /* STUBS_H */
 
