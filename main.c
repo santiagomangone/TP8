@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
@@ -18,9 +17,22 @@ int main(void) {
     add_operation ('/', division);
     add_operation ('^', exponenciacion);
    
-    error_code=get_input(&operando1,&operando2,&operador);                      //Almacena en su debido lugar los datos que ingrese el usuario
-    check_errors(error_code);                                                   //Verifica la salida de get input,verificando si hubo o no errores.
+    error_code=get_input(&operando1,&operando2,&operador);                      //Almacena en su debido lugar los datos que ingrese el usuario y guarda el "codigo de error"
+    if (check_errors(error_code)!= 0){                                           //Verifica la salida de get input,verificando si hubo o no errores.
+       return 1;
+    }                                                   
+    
+    
     printf("\n= %f\n", calc_res(operando1,operando2,operador));                 //Imprime en pantalla el resultado de la operacion a realizar.
     return 0;
 }
 
+int check_errors(int error_code){
+    switch (error_code){
+        case 0: 
+            return 0;
+        case 1:
+            printf("Error, dato invalido");
+            return 1;      
+    }
+}
